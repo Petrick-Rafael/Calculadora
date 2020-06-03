@@ -18,8 +18,3 @@ switch ($_REQUEST['op']) {
         $dados = array('result' => $_SESSION['result']);
         break;
 
-    default:
-        break;
-}
-echo json_encode($dados);
-?>
