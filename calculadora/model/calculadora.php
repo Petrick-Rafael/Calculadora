@@ -12,6 +12,7 @@
         case 'res':
             // $dados = array('result' => $_SESSION['result']);
             
+            
             if ($_REQUEST['op'] == "adc") {
                 // case 'adc':
                     !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] += $_REQUEST['v1'];
