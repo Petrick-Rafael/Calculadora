@@ -1,82 +1,82 @@
 $(document).ready(function() {
 
-    var display = ''
-    var c = 0
+        var display = ''
+        var c = 0
 
-    function calcular(value) {
-        $.ajax({
-            type: 'POST',
-            dataType: 'JSON',
-            assync: true,
-            data: value,
-            url: 'calculadora/model/calculadora.php',
-            success: function(dados) {
-                $('#display').val(dados.result)
-            }
-        })
-    }
-
-    $('.btn').click(function(e) {
-
-        e.preventDefault()
-
-        var number = $(this).attr('id')
-
-        var value
-
-        switch (number) {
-            case 'C':
-                value = `v1=0&op=C`
-                display = ''
-                number = ''
-                calcular(value)
-                break
-
-            case 'adc':
-                value = `v1=${display}&op=adc`
-                calcular(value)
-                display = ''
-                break
-
-            case 'sub':
-                value = `v1=${display}&op=sub`
-                calcular(value)
-                display = ''
-                break
-
-            case 'div':
-                value = `v1=${display}&operacao=div`
-                calcular(value)
-                display = ''
-                break
-
-            case 'X':
-                value = `v1=${display}&op=X`
-                calcular(value)
-                display = ''
-                break
-
-            case 'porc':
-                value = `v1=${display}&operacao=porc`
-                calcular(value)
-                display = ''
-                break
-
-            case 'res':
-                value = `v1=${display}&op=res`
-                calcular(value)
-                display = ''
-                break
-
-            default:
-                display += number
-                $('#display').val(display)
+        function calcular(value) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'JSON',
+                assync: true,
+                data: value,
+                url: 'calculadora/model/calculadora.php',
+                success: function(dados) {
+                    $('#display').val(dados.result)
+                }
+            })
         }
 
-        $('#display').val(display)
+        $('.btn').click(function(e) {
+
+            e.preventDefault()
+
+            var number = $(this).attr('id')
+
+            var value
+
+            switch (number) {
+                case 'C':
+                    value = `v1=0&op=C`
+                    display = ''
+                    number = ''
+                    calcular(value)
+                    break
+
+                case 'adc':
+                    value = `v1=${display}&op=adc`
+                    calcular(value)
+                    display = ''
+                    break
+
+                case 'sub':
+                    value = `v1=${display}&op=sub`
+                    calcular(value)
+                    display = ''
+                    break
+
+                case 'div':
+                    value = `v1=${display}&op=div`
+                    calcular(value)
+                    display = ''
+                    break
+
+                case 'X':
+                    value = `v1=${display}&op=X`
+                    calcular(value)
+                    display = ''
+                    break
+
+                case 'porc':
+                    value = `v1=${display}&op=porc`
+                    calcular(value)
+                    display = ''
+                    break
+
+                case 'res':
+                    value = `v1=${display}&op=res`
+                    calcular(value)
+                    display = ''
+                    break
+
+                default:
+                    display += number
+                    $('#display').val(display)
+            }
+
+            $('#display').val(display)
+        })
     })
-})
-// $(document).ready(function() {
+    // $(document).ready(function() {
 
 //     var display = ''
 //     var v1 = ''
