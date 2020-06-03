@@ -36,6 +36,36 @@ $(document).ready(function() {
                 display = ''
                 break
 
+            case 'sub':
+                value = `valor=${display}&operacao=sub`
+                calcular(value)
+                display = ''
+                break
+
+            case 'div':
+                value = `valor=${display}&operacao=div`
+                calcular(value)
+                display = ''
+                break
+
+            case 'X':
+                value = `valor=${display}&operacao=X`
+                calcular(value)
+                display = ''
+                break
+
+            case 'porc':
+                value = `valor=${display}&operacao=porc`
+                calcular(value)
+                display = ''
+                break
+
+            case 'res':
+                value = `valor=${display}&operacao=sub`
+                calcular(value)
+                display = ''
+                break
+
             default:
                 display += number
                 $('#display').val(display)
