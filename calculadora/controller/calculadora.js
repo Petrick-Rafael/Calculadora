@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var display = ''
     var c = 0
-    
+
     function calcular(value) {
         $.ajax({
             type: 'POST',
@@ -22,7 +22,7 @@ $(document).ready(function() {
 
         var number = $(this).attr('id')
 
-        var value   
+        var value
 
         switch (number) {
             case 'C':
@@ -51,7 +51,7 @@ $(document).ready(function() {
                 break
 
             case 'X':
-                value = `v1=${display}&operacao=X`
+                value = `v1=${display}&op=X`
                 calcular(value)
                 display = ''
                 break
@@ -72,7 +72,7 @@ $(document).ready(function() {
                 display += number
                 $('#display').val(display)
         }
-       
+
         $('#display').val(display)
     })
 })
@@ -103,7 +103,7 @@ $(document).ready(function() {
 //                 number = ''
 //                 display = ''
 //                 c = 0
-                
+
 //                 switch (op) {
 //                     case '+':
 //                         vf = parseFloat(vf) + parseFloat(v1)  
@@ -130,7 +130,7 @@ $(document).ready(function() {
 //                         display = vf
 //                         vf = 0
 //                         break;
-                
+
 //                     default:
 //                         break;
 //                 }
@@ -187,7 +187,7 @@ $(document).ready(function() {
 //                 display = ''
 //                 number = ''
 //                 break;
-        
+
 //             default:0
 //                 break;
 //             }

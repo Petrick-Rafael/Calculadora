@@ -1,7 +1,6 @@
 <?php
     session_start();
-    $a = '';
-
+    
     switch ($_REQUEST['op']) {
         case 'C':
             session_destroy();
@@ -9,66 +8,52 @@
             $dados = array('result' => 0);
         break;
 
-        case 'res': 
-            // $dados = array('result' => $_SESSION['result']);
-            
-
-            if ($_REQUEST['op'] == "adc") {
-                // case 'adc':
-                    !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] += $_REQUEST['v1'];
-            $dados = array('result' => $_SESSION['result']);
-            $_SESSION['result'] = '';
-                // break;
+        case 'res':
+            if ($_SESSION['op'] == 'adc') {
+                !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] += $_REQUEST['v1'];
+                $_REQUEST['op'] = 'adc';
+                $_SESSION['op'] = 'adc';
+                $dados = array('result' => $_SESSION['result']);
+                $_REQUEST['v1'] = '';
+                
+            } else if ($_SESSION['op'] == 'sub'){
+                !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] -= $_REQUEST['v1'];
+                $_REQUEST['op'] = 'sub';
+                $_SESSION['op'] = 'sub';
+                $dados = array('result' => $_SESSION['result']);
+                $_REQUEST['v1'] = '';
+                
+            } else if ($_SESSION['op'] == 'X'){
+                !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] *= $_REQUEST['v1'];
+                $_REQUEST['op'] = 'X';
+                $_SESSION['op'] = 'X';
+                $dados = array('result' => $_SESSION['result']);
+                $_REQUEST['v1'] = '';
             }
-                //                     case '+':
-                //                         vf = parseFloat(vf) + parseFloat(v1)  
-                //                         display = vf
-                //                         vf = 0
-                //                         break;
-                //                     case '-':
-                //                         vf = parseFloat(vf) - parseFloat(v1)  
-                //                         display = vf
-                //                         vf = 0
-                //                         break;
-                //                     case '%':
-                //                         vf = parseFloat(vf) * parseFloat(v1)   
-                //                         display = vf
-                //                         vf = 0
-                //                         break;
-                //                     case '/':
-                //                         vf = parseFloat(vf) / parseFloat(v1)  
-                //                         display = vf
-                //                         vf = 0
-                //                         break;
-                //                     case 'X':
-                //                         vf = parseFloat(vf) * parseFloat(v1)  
-                //                         display = vf
-                //                         vf = 0
-                //                         break;
-                                
-                //                     default:
-                //                         break;
-                //                 }
         break;
         
         case 'adc':
             !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] += $_REQUEST['v1'];
             $_REQUEST['op'] = 'adc';
-            $dados = array('result' => $_SESSION['result']);
-            $_REQUEST['v1'] = '';            
-            
-            // $_REQUEST['op'] = '';
+            $_SESSION['op'] = 'adc';
+            $dados = array('result' => $_SESSION['result']);       
+            $_REQUEST['v1'] = '';
         break;
 
         case 'sub':
             !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] -= $_REQUEST['v1'];
+            $_REQUEST['op'] = 'sub';
+            $_SESSION['op'] = 'sub';
             $dados = array('result' => $_SESSION['result']);
+            $_REQUEST['v1'] = '';
         break;
 
         case 'X':
             !isset($_SESSION['result']) ? $_SESSION['result'] = $_REQUEST['v1'] : $_SESSION['result'] *= $_REQUEST['v1'];
-            $_REQUEST['v1'] = 0;
+            $_REQUEST['op'] = 'X';
+            $_SESSION['op'] = 'X';
             $dados = array('result' => $_SESSION['result']);
+            $_REQUEST['v1'] = '';
         break;
 
         case 'div':
