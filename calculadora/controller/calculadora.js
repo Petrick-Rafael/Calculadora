@@ -9,7 +9,7 @@ $(document).ready(function() {
             dataType: 'JSON',
             assync: true,
             data: value,
-            url: 'calculadora/model/calculadora2.php',
+            url: 'calculadora/model/calculadora.php',
             success: function(dados) {
                 $('#display').val(dados.result)
             }
@@ -63,7 +63,7 @@ $(document).ready(function() {
                 break
 
             case 'res':
-                value = `v1=${display}&operacao=sub`
+                value = `v1=${display}&op=res`
                 calcular(value)
                 display = ''
                 break
